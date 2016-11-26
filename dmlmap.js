@@ -391,12 +391,12 @@ function FillLinesPanel(myLat, myLng) {
 	if (myLineList.length == 0) {
 		myPanelLineList = "<div>Hiện tại không có đường nào đang đánh dấu dở, hãy đánh dấu đường, bạn cần ít nhất 2 điểm để tạo thành đoạn đánh dấu</div>";
 	} else {
-        myPanelLineList = "<div>Hãy nối điểm vừa tạo này với các điểm đã được tạo trước đó:</div>"
+        myPanelLineList = "<div>Bạn có thể nối điểm vừa tạo này với các điểm đã được tạo trước đó để tạo thành đường:</div>"
 		for (var i = 0; i < myLineList.length; i++) {
 			if (i == 0) {
-				myPanelLineList += "<li class='list-group-item' style='color: " + PutHashtags(myLineList[i].LineColor) + "'><div onclick='CreateNewMarker(" + myLat + ", " + myLng + ", " + myLineList[i].LineID + ", 2);' title='Select this line' class='btn btn-primary btn-xs fontawesome-map-marker'></div> Line #" + myLineList[i].LineID + " </li>";
+				myPanelLineList += "<li class='list-group-item' style='color: " + PutHashtags(myLineList[i].LineColor) + "'><div onclick='CreateNewMarker(" + myLat + ", " + myLng + ", " + myLineList[i].LineID + ", 2);' title='Select this line' class='btn btn-primary btn-xs fontawesome-map-marker'></div> Đường #" + myLineList[i].LineID + " </li>";
 			} else {
-				myPanelLineList += "<li class='list-group-item' style='color: " + PutHashtags(myLineList[i].LineColor) + "'><div onclick='CreateNewMarker(" + myLat + ", " + myLng + ", " + myLineList[i].LineID + ", 2);' title='Select this line' class='btn btn-primary btn-xs fontawesome-map-marker'></div> Line #" + myLineList[i].LineID + " </li>";
+				myPanelLineList += "<li class='list-group-item' style='color: " + PutHashtags(myLineList[i].LineColor) + "'><div onclick='CreateNewMarker(" + myLat + ", " + myLng + ", " + myLineList[i].LineID + ", 2);' title='Select this line' class='btn btn-primary btn-xs fontawesome-map-marker'></div> Đường #" + myLineList[i].LineID + " </li>";
 			}
 		}
 	}
@@ -411,20 +411,20 @@ function FillLinesPanel(myLat, myLng) {
 function FillLineSettingsPanel(myLineID, myLineColor) {
 	// Clears content of panel
 	$("#EssSettingsModalBody").html("");
-	$("#dmlPnlSettingsTitle").html("Line Settings Panel");
-	$("#BtnSettingsSave").val("Save Line Settings");
-	$("#BtnReset").val("Delete Line").show();
+	$("#dmlPnlSettingsTitle").html("Thiết lập đường đánh dấu");
+	$("#BtnSettingsSave").val("Lưu thiết lập");
+	$("#BtnReset").val("Xóa đường").show();
 	$("#mySettings").modal("toggle");
 	var newElement1 = $(document.createElement('h2')).attr('id', 'dmlLineSettingsCover').attr('class', 'modal-title');
-	newElement1.after().html("<div class='input-group'><span class='input-group-addon' id='dmlLineSettingsID'>Line ID</span><label id='dmlLineSettingsIdValue' class='form-control StngElement' aria-describedby='dmlLineSettingsID'>" + myLineID + "</div><div class='input-group'><span class='input-group-addon' id='dmlLineSettingsColor'>Color</span><input id='dmlLineSettingsColorValue' type='color' class='form-control StngElement' aria-describedby='dmlLineSettingsColor'></input></div><br />");
+	newElement1.after().html("<div class='input-group'><span class='input-group-addon' id='dmlLineSettingsID'>Line ID</span><label id='dmlLineSettingsIdValue' class='form-control StngElement' aria-describedby='dmlLineSettingsID'>" + myLineID + "</div><div class='input-group'><span class='input-group-addon' id='dmlLineSettingsColor'>Mức độ tắc</span><select class='form-control' id='dmlLineSettingsColorValue'><option value='#FF0000'>Rất tắc</option><option value='#F4A460'>Tắc vừa</option><option value='#FFFF00'>Hơi tắc, có thể lưu thông</option></select></input></div><br />");
 	newElement1.appendTo("#EssSettingsModalBody");
 	$("#dmlLineSettingsColorValue").val(myLineColor);
 }
 function FillPolygonesPanel(myLat, myLng) {
 	// Clears content of panel
 	$("#EssSettingsModalBody").html("");
-	$("#dmlPnlSettingsTitle").html("Polygons Control Panel");
-	$("#BtnSettingsSave").val("Create New Polygon");
+	$("#dmlPnlSettingsTitle").html("Đánh dấu khu vực");
+	$("#BtnSettingsSave").val("Khu vực mới");
 	$("#BtnReset").hide();
 	//Creates settings areas
 
@@ -435,7 +435,7 @@ function FillPolygonesPanel(myLat, myLng) {
 	var myPanelPolygonList;
 
 	if (myPolygonList.length == 0) {
-		myPanelPolygonList = "<div>There is no polygon. Create a new one. You need to create at least three polygon corners.</div>";
+		myPanelPolygonList = "<div>Hiện tại không có khu vực đang được đánh dấu, để tạo khu vực đánh dấu, bạn cần ít nhất 3 góc đánh dấu</div>";
 	} else {
 		for (var i = 0; i < myPolygonList.length; i++) {
 			if (i == 0) {
@@ -457,9 +457,9 @@ function FillPolygonesPanel(myLat, myLng) {
 function FillPolygonSettingsPanel(myPolygonID, myPolygonBorderColor, myPolygonFillColor, myPolygonDescription) {
 	// Clears content of panel
 	$("#EssSettingsModalBody").html("");
-	$("#dmlPnlSettingsTitle").html("Polygon Settings Panel");
-	$("#BtnSettingsSave").val("Save Polygon Settings");
-	$("#BtnReset").val("Delete Polygon").show();
+	$("#dmlPnlSettingsTitle").html("Thiết lập thông tin khu vực");
+	$("#BtnSettingsSave").val("Lưu thiết lập khu vực");
+	$("#BtnReset").val("Xóa khu vực").show();
 	$("#mySettings").modal("toggle");
 	var newElement1 = $(document.createElement('h2')).attr('id', 'dmlPolygonSettingsCover').attr('class', 'modal-title');
 	newElement1.after().html("<div class='input-group'><span class='input-group-addon' id='dmlPolygonSettingsID'>Polygon ID</span><label id='dmlPolygonSettingsIdValue' class='form-control StngElement' aria-describedby='dmlPolygonSettingsID'>" + myPolygonID + "</div><div class='input-group'><span class='input-group-addon' id='dmlPolygonBorderColor'>Border Color</span><input id='dmlPolygonBorderColorValue' type='color' class='form-control StngElement' aria-describedby='dmlPolygonBorderColor'></input></div><div class='input-group'><span class='input-group-addon' id='dmlPolygonFillColor'>Fill Color</span><input id='dmlPolygonFillColorValue' type='color' class='form-control StngElement' aria-describedby='dmlPolygonFillColor'></input></div><div class='input-group'><span class='input-group-addon' id='dmlPolygonDescription'>Description</span><input id='dmlPolygonDescriptionValue' type='text' class='form-control StngElement' aria-describedby='dmlPolygonDescription'></input></div><br />");
@@ -521,6 +521,7 @@ function addMarker(location) {
 				newinfowindow.open(map, newMarker);
 			}
 		})(newMarker));
+        new google.maps.event.trigger( newMarker, 'click' );
 	}
 }
 function CenterMap(myLat, myLng) {
@@ -706,16 +707,16 @@ function SaveSettings() {
 		var myLat = $("#dmlShapeCornerLat").val();
 		var myLng = $("#dmlShapeCornerLng").val();
 		CreateNewShape(myLat, myLng, 1);
-	} else if (mySaveType == "Create New Polygon") {
+	} else if (mySaveType == "Khu vực mới") {
 		var myLat = $("#dmlShapeCornerLat").val();
 		var myLng = $("#dmlShapeCornerLng").val();
 		CreateNewShape(myLat, myLng, 2);
-	} else if (mySaveType == "Save Line Settings") {
+	} else if (mySaveType == "Lưu thiết lập") {
 		var myLineID = $("#dmlLineSettingsIdValue").html();
 		var myLineColor = $("#dmlLineSettingsColorValue").val();
 		var myColorSaveString = dmlServer + "/dmlmap/dmlmapfunctions.php?SaveType=1&CntID=" + myLineID + "&myField1=CntField9&myDeger1=" + ClearHashtags(myLineColor) + " ";
 		CallSaveHandler(myColorSaveString, 1);
-	} else if (mySaveType == "Save Polygon Settings") {
+	} else if (mySaveType == "Lưu thiết lập khu vực") {
 		var myPolygonID = $("#dmlPolygonSettingsIdValue").html();
 		var myPolBorderColor = $("#dmlPolygonBorderColorValue").val();
 		var myPolFillColor = $("#dmlPolygonFillColorValue").val();
@@ -759,15 +760,15 @@ function ResetControl() {
 		myDecisionText = "Do you want to reset control?";
 		var myUrl = $(location).attr('href');
 		myResetStr = dmlServer + "/dmlmap/dmlmapfunctions.php?SaveType=res&CntUsrCtrlID=1&url=" + myUrl + " ";
-	} else if (myButtonText == "Delete Line") {
+	} else if (myButtonText == "Xóa đường") {
 		// Deletes one record from the database based on the ID number
 		var myLineID = $("#dmlLineSettingsIdValue").text();
-		myDecisionText = "Do you want to delete line?";
+		myDecisionText = "Bạn có chắc muốn xóa đường đánh dấu không?";
 		myResetStr = dmlServer + "/dmlmap/dmlmapfunctions.php?SaveType=del1&CntID=" + myLineID + " ";
-	} else if (myButtonText == "Delete Polygon") {
+	} else if (myButtonText == "Xóa khu vực") {
 		// Deletes one record from the database based on the ID number
 		var myPolygonID = $("#dmlPolygonSettingsIdValue").text();
-		myDecisionText = "Do you want to delete polygon?";
+		myDecisionText = "Bạn có chắc muốn xóa khu vực đánh dấu không?";
 		myResetStr = dmlServer + "/dmlmap/dmlmapfunctions.php?SaveType=del1&CntID=" + myPolygonID + " ";
 	}
 
@@ -787,7 +788,7 @@ function dmlCreateMap() {
 	choice.data = {};
 	choice.processData = false;
 	choice.success = function (result) {
-		document.getElementById("dmlApiKeyError").innerHTML = "<h3>" + result + "</h3><p>Please click on the button below to activate your map.</p><br /><div id='dmlBtnActivateMap' onclick='FncDmlActivateMap();' class='btn btn-success'>Activate Map</div>";
+		document.getElementById("dmlApiKeyError").innerHTML = "<h3>" + result + "</h3><p>Hãy ấn nút sau để kích hoạt bản đồ</p><br /><div id='dmlBtnActivateMap' onclick='FncDmlActivateMap();' class='btn btn-success'>Kích hoạt bản đồ</div>";
 		$("#dmlApiEnterPanel").hide();
 	};
 	choice.error = function (err) { alert(err.statusText + "KK"); };

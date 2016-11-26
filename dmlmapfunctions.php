@@ -189,17 +189,17 @@
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		$fieldlink = $url;
-		$field1 = "-37.817564805286814";
-		$field2 = "144.9440860748291";
+		$field1 = DEFAULT_LAT;
+		$field2 = DEFAULT_LONG;
 		$field3 = $api;
 		$field4 = "650";	
 		$field5 = "1";
-		$field8 = "12";
+		$field8 = DEFAULT_ZOOM;
 		$sql = "INSERT INTO tbldmlmapcontent (CntUsrCtrlID, CntLink, CntField1, CntField2, CntField3, CntField4, CntField5, CntField8)
 		VALUES ('1', '$fieldlink', '$field1', '$field2', '$field3', '$field4', '$field5', '$field8')";
 
 		if ($conn->query($sql) === TRUE) {
-			echo "New map records created successfully";
+			echo "Bản đồ mới đã được tạo ra";
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}

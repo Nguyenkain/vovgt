@@ -1,4 +1,4 @@
-
+<?php include "config.php"; ?>
 	<!-- MAP PANEL STARTS -->
 	<div id="Map1idHolder" style="display:none;"></div>
 	<div id="MapScriptHolder"></div>
